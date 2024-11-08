@@ -28,9 +28,17 @@ class Serial(Film):
     def __str__(self):
         return f"{self.title} S{self.season:02d}E{self.episode:02d})"
     
-#wspólna funkcja do filtrowania według typu:
+#wspólna funkcja do filtrowania według typu (Film lub Serial):
 def get_titles_by_type(library, title_type):
     return sorted([item for item in library if type(item) is title_type], key=lambda x: x.title)
+
+#funkcja do filtrowania tylko filmów:
+def get_movies(library):
+    return get_titles_by_type(library, Film)
+
+#funkcja do filtrowania tylko seriali:
+def get_series(library):
+    return get_titles_by_type(library, Serial)
 
 #funkcja wyszukująca tytuł:
 def search(library, title):
